@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Alpha2))
         {
-            currentTypeIndex = 2;
+            currentTypeIndex = 1;
         }
         else if (Input.GetKeyUp(KeyCode.Alpha3))
         {
