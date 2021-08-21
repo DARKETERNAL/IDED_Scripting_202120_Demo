@@ -29,14 +29,22 @@ public class TestGO : MonoBehaviour
         //print($"{palindrome} is palindrome: {dataStructTester.IsPalindrome(palindrome, 2)}");
         //print($"{notPalindrome} is palindrome: {dataStructTester.IsPalindrome(notPalindrome, 2)}");
 
-        Stack<string> stack = new Stack<string>();
-        Queue<int> queue = new Queue<int>();
+        //Stack<string> stack = new Stack<string>();
+        //Queue<int> queue = new Queue<int>();
 
-        FillQueue(queue);
-        FillStack(stack);
+        //FillQueue(queue);
+        //FillStack(stack);
 
-        KeyValuePair<int, string> fromDict = dataStructTester.GetFromDictionary(queue, stack, 2);
-        print($"Retrieved from dict: [{fromDict.Key}], [{fromDict.Value}]");
+        //KeyValuePair<int, string> fromDict = dataStructTester.GetFromDictionary(queue, stack, 2);
+        //print($"Retrieved from dict: [{fromDict.Key}], [{fromDict.Value}]");
+
+        Stack<int> stack = new Stack<int>();
+        dataStructTester.FillStackWithInts(stack, 20);
+        print($"Element from stack: {dataStructTester.GetFromStack(stack, 0)}");
+
+        //Queue<int> queue = new Queue<int>();
+        //dataStructTester.FillQueueWithInts(queue, 20);
+        //print($"Element from queue: {dataStructTester.GetFromQueue(queue, 10)}");
     }
 
     private void PrintArray(int[] source)

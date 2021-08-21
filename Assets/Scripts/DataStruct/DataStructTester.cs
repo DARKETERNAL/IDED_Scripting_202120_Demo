@@ -177,4 +177,53 @@ public class DataStructTester
 
         return result;
     }
+
+    public int GetFromStack(Stack<int> stack, int index)
+    {
+        int result = -1;
+
+        do
+        {
+            result = stack.Pop();
+            
+        }
+        while (stack.Count > index); //(stack.count - index)
+
+        return result;
+    }
+
+    public void FillStackWithInts(Stack<int> stack, int size)
+    {
+        Random r = new Random();
+
+        for (int i = 0; i < size; i++)
+        {
+            stack.Push(r.Next(1, 100));
+        }
+    }
+
+    public int GetFromQueue(Queue<int> queue, int index)
+    {
+        int result = -1;
+        int dequeuedElements = 0;        
+
+        do
+        {
+            result = queue.Dequeue();
+            dequeuedElements += 1; // dequeuedElements = dequeuedElements + 1 // dequeuedElements++
+        }
+        while (!(dequeuedElements > index)); // !(a > b) != [(a <= b) // (a < b) || (a == b)]
+
+        return result;
+    }
+
+    public void FillQueueWithInts(Queue<int> queue, int size)
+    {
+        Random r = new Random();
+
+        for (int i = 0; i < size; i++)
+        {
+            queue.Enqueue(r.Next(1, 100));
+        }
+    }
 }
