@@ -7,16 +7,16 @@ public class Turret : MonoBehaviour
     protected float delayTime = 0.65F;
 
     [SerializeField]
-    private EBulletType bulletType;
+    protected EBulletType bulletType;
+
+    [SerializeField]
+    protected float shootTime = 2F;
+
+    [SerializeField]
+    protected float speed = 10F;
 
     [SerializeField]
     private Transform spawnPosition;
-
-    [SerializeField]
-    private float shootTime = 2F;
-
-    [SerializeField]
-    private float speed = 10F;
 
     [Header("Bullets")]
     [SerializeField]
@@ -29,7 +29,7 @@ public class Turret : MonoBehaviour
     private HardBullet hardBulletPrefab;
 
     // Start is called before the first frame update
-    private void Start()
+    protected void Start()
     {
         InvokeRepeating("Shoot", 0F, shootTime);
     }
@@ -39,7 +39,7 @@ public class Turret : MonoBehaviour
         SpawnBullet();
     }
 
-    private void SpawnBullet()
+    protected virtual void SpawnBullet()
     {
         OOPBullet bullet = null;
 
@@ -64,7 +64,7 @@ public class Turret : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected void Update()
     {
         if (isDelayed)
         {
