@@ -2,33 +2,20 @@ using UnityEngine;
 
 public class BulletFactory : MonoBehaviour
 {
-    [Header("Bullets")]
-    [SerializeField]
-    private LowBullet lowBulletPrefab;
+    private BulletPool bulletPool;
 
-    [SerializeField]
-    private MidBullet midBulletPrefab;
+    private void Awake()
+    {
+        bulletPool = GetComponent<BulletPool>();
+    }
 
-    [SerializeField]
-    private HardBullet hardBulletPrefab;
-
-    public OOPBullet GetBullet(EBulletType bulletType)
+    public OOPBullet GetBullet()
     {
         OOPBullet bullet = null;
 
-        switch (bulletType)
+        if (bulletPool != null)
         {
-            case EBulletType.Low:
-                bullet = Instantiate<LowBullet>(lowBulletPrefab, transform);
-                break;
-
-            case EBulletType.Mid:
-                bullet = Instantiate<MidBullet>(midBulletPrefab, transform);
-                break;
-
-            case EBulletType.Hard:
-                bullet = Instantiate<HardBullet>(hardBulletPrefab, transform);
-                break;
+            bullet = bulletPool.GetBullet();
         }
 
         return bullet;

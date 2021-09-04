@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 535991965}
   - component: {fileID: 535991964}
   - component: {fileID: 535991966}
+  - component: {fileID: 535991967}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -253,7 +254,6 @@ MonoBehaviour:
   lowBulletPrefab: {fileID: 1113030973883600767, guid: dc7c08065ddf8cc489df60622108df8d, type: 3}
   midBulletPrefab: {fileID: 7713260971252217362, guid: 0edc82057940e124fb48d1f28454fff4, type: 3}
   hardBulletPrefab: {fileID: 8370104057372982094, guid: 6587660d898c94448aa9fed3934edb2d, type: 3}
-  bulletFactory: {fileID: 535991966}
 --- !u!4 &535991965
 Transform:
   m_ObjectHideFlags: 0
@@ -280,9 +280,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c47c23ab4cca664d9b18ecbe0f295f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowBulletPrefab: {fileID: 1113030973883600767, guid: dc7c08065ddf8cc489df60622108df8d, type: 3}
-  midBulletPrefab: {fileID: 7713260971252217362, guid: 0edc82057940e124fb48d1f28454fff4, type: 3}
-  hardBulletPrefab: {fileID: 8370104057372982094, guid: 6587660d898c94448aa9fed3934edb2d, type: 3}
+--- !u!114 &535991967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535991963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 357f3e67a3f734842952a14b7e96ab0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseBullet: {fileID: 1113030973883600767, guid: dc7c08065ddf8cc489df60622108df8d, type: 3}
+  poolSize: 10
 --- !u!1 &547761574
 GameObject:
   m_ObjectHideFlags: 0

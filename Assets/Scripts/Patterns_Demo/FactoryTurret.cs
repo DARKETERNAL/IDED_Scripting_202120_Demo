@@ -17,7 +17,7 @@ public class FactoryTurret : Turret
         }
         else
         {
-            OOPBullet bullet = bulletFactory.GetBullet(bulletType);
+            OOPBullet bullet = bulletFactory.GetBullet();
 
             if (bullet != null)
             {
