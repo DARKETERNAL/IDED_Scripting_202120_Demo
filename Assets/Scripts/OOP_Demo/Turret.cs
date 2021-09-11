@@ -16,56 +16,30 @@ public class Turret : MonoBehaviour
     protected float speed = 10F;
 
     [SerializeField]
-    private Transform spawnPosition;
+    protected Transform spawnPosition;
 
-    [Header("Bullets")]
-    [SerializeField]
-    private LowBullet lowBulletPrefab;
-
-    [SerializeField]
-    private MidBullet midBulletPrefab;
-
-    [SerializeField]
-    private HardBullet hardBulletPrefab;
+    protected ShootCommand shootCommand;
 
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Start()
     {
         InvokeRepeating("Shoot", 0F, shootTime);
+        shootCommand = gameObject.AddComponent<ShootCommand>();
+        shootCommand.Init(bulletType, spawnPosition, speed);
     }
 
     private void Shoot()
     {
-        SpawnBullet();
-    }
-
-    protected virtual void SpawnBullet()
-    {
-        OOPBullet bullet = null;
-
-        switch (bulletType)
-        {
-            case EBulletType.Low:
-                bullet = Instantiate<LowBullet>(lowBulletPrefab, spawnPosition.position, spawnPosition.rotation);
-                break;
-
-            case EBulletType.Mid:
-                bullet = Instantiate<MidBullet>(midBulletPrefab, spawnPosition.position, spawnPosition.rotation);
-                break;
-
-            case EBulletType.Hard:
-                bullet = Instantiate<HardBullet>(hardBulletPrefab, spawnPosition.position, spawnPosition.rotation);
-                break;
-        }
-
-        if (bullet != null)
-        {
-            bullet.BulletRigidbody.AddForce(transform.forward * speed, ForceMode.Impulse);
-        }
+        shootCommand.Execute();
     }
 
     protected virtual void Update()
     {
+        if (Input.GetKeyUp(KeyCode.X))
+        {
+            isDelayed = true;
+        }
+
         if (isDelayed)
         {
             DelayTurrets();

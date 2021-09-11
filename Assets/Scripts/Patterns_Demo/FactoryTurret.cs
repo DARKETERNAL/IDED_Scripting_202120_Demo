@@ -10,32 +10,11 @@ public class FactoryTurret : Turret
         bulletFactory = GetComponent<BulletFactory>();
     }
 
-    protected override void SpawnBullet()
+    protected override void Start()
     {
-        if (bulletFactory == null)
-        {
-            CancelInvoke("Shoot");
-        }
-        else
-        {
-            // ?:
-            //OOPBullet bullet = null;
-            //if (decorator == null)
-            //{
-            //    bullet = bulletFactory.GetBullet();
-            //}
-            //else
-            //{
-            //    bullet = decorator.GetBullet();
-            //}
-
-            OOPBullet bullet = decorator == null ? bulletFactory.GetBullet() : decorator.GetBullet();
-
-            if (bullet != null)
-            {
-                bullet.BulletRigidbody.AddForce(transform.forward * speed, ForceMode.Impulse);
-            }
-        }
+        InvokeRepeating("Shoot", 0F, shootTime);
+        shootCommand = gameObject.AddComponent<FactoryShootCommand>();
+        shootCommand.Init(bulletType, spawnPosition, speed);
     }
 
     protected override void Update()
