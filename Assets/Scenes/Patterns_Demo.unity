@@ -251,9 +251,6 @@ MonoBehaviour:
   shootTime: 2
   speed: 10
   spawnPosition: {fileID: 535991965}
-  lowBulletPrefab: {fileID: 1113030973883600767, guid: dc7c08065ddf8cc489df60622108df8d, type: 3}
-  midBulletPrefab: {fileID: 7713260971252217362, guid: 0edc82057940e124fb48d1f28454fff4, type: 3}
-  hardBulletPrefab: {fileID: 8370104057372982094, guid: 6587660d898c94448aa9fed3934edb2d, type: 3}
 --- !u!4 &535991965
 Transform:
   m_ObjectHideFlags: 0
@@ -289,10 +286,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 535991963}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 357f3e67a3f734842952a14b7e96ab0c, type: 3}
+  m_Script: {fileID: 11500000, guid: b1906e1c8617f6e4aa583b591b2bd80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseBullet: {fileID: 1113030973883600767, guid: dc7c08065ddf8cc489df60622108df8d, type: 3}
+  baseBullet: {fileID: 8370104057372982094, guid: 6587660d898c94448aa9fed3934edb2d, type: 3}
   poolSize: 10
 --- !u!1 &547761574
 GameObject:

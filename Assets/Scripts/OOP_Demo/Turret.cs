@@ -28,7 +28,7 @@ public class Turret : MonoBehaviour
         shootCommand.Init(bulletType, spawnPosition, speed);
     }
 
-    private void Shoot()
+    protected void Shoot()
     {
         shootCommand.Execute();
     }

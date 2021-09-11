@@ -12,7 +12,6 @@ public class FactoryTurret : Turret
 
     protected override void Start()
     {
-        InvokeRepeating("Shoot", 0F, shootTime);
         shootCommand = gameObject.AddComponent<FactoryShootCommand>();
         shootCommand.Init(bulletType, spawnPosition, speed);
     }
@@ -24,6 +23,9 @@ public class FactoryTurret : Turret
             decorator = gameObject.AddComponent<BulletPoolDecorator>();
         }
 
-        base.Update();
+        if (Input.GetButtonUp("Fire1"))
+        {
+            Shoot();
+        }
     }
 }
