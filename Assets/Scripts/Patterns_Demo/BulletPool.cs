@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BulletPool : MonoBehaviour
+public abstract class BulletPool : MonoBehaviour, IBulletPool
 {
     [SerializeField]
     private OOPBullet baseBullet;
@@ -20,20 +20,26 @@ public abstract class BulletPool : MonoBehaviour
             bullet = bulletCollection[0];
             bulletCollection.RemoveAt(0);
             bullet.gameObject.SetActive(true);
+            bullet.enabled = true;
         }
         else
         {
             bullet = Instantiate<OOPBullet>(baseBullet);
         }
 
+        bullet.onBulletReadyToDispose += StoreBullet;
+
         return bullet;
     }
 
     public void StoreBullet(OOPBullet targetBullet)
     {
+        targetBullet.onBulletReadyToDispose -= StoreBullet;
+
         bulletCollection.Add(targetBullet);
         targetBullet.BulletRigidbody.velocity = Vector3.zero;
         targetBullet.gameObject.SetActive(false);
+        targetBullet.enabled = false;
         targetBullet.transform.position = transform.position;
     }
 
@@ -44,6 +50,7 @@ public abstract class BulletPool : MonoBehaviour
             for (int i = 0; i < poolSize; i++)
             {
                 OOPBullet bulletInstance = Instantiate<OOPBullet>(baseBullet);
+                bulletInstance.SetCanBeRecycled();
                 StoreBullet(bulletInstance);
             }
         }

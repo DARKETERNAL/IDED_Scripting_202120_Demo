@@ -64,7 +64,7 @@ public class Turret : MonoBehaviour
         }
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         if (isDelayed)
         {
