@@ -13,6 +13,8 @@ public abstract class OOPBullet : MonoBehaviour
 
     public Rigidbody BulletRigidbody { get; private set; }
 
+    private BulletPool pool;
+
     public void SetCanBeRecycled()
     {
         CanBeRecycled = true;

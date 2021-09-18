@@ -2,19 +2,27 @@ using UnityEngine;
 
 public class FactoryShootCommand : ShootCommand
 {
-    private BulletPoolDecorator decorator;
-    private BulletPool bulletFactory;
+    private EBulletType bulletType;
+    private BulletFacade bulletFactoryFacade;
+
+    public void Subscribe(FactoryTurret turret)
+    {
+        turret.OnBulletTypeChanged += OnBulletTypeChanged;
+    }
+
+    private void OnBulletTypeChanged(EBulletType newBulletType)
+    {
+        bulletType = newBulletType;
+    }
 
     private void Start()
     {
-        bulletFactory = GetComponent<BulletPool>();
+        bulletFactoryFacade = GetComponent<BulletFacade>();
     }
 
     protected override void SpawnBullet()
     {
-        decorator = GetComponent<BulletPoolDecorator>();
-
-        OOPBullet bullet = decorator == null ? bulletFactory.GetBullet() : decorator.GetBullet();
+        OOPBullet bullet = bulletFactoryFacade.GetBullet(bulletType);
 
         if (bullet != null)
         {
